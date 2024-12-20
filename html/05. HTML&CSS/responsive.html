@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            background-color: red;
+        }
+
+        /* @media 미디어타입 and (조건){
+            조건이 맞을 때 디자인
+        } */
+
+
+        /* 미디어타입 : all, print, screen, speech 등 여러가지 있지만 보통 screen을 많이 사용 */
+        /* 조건 : width, max-width, min-width, height 등 여러가지 있지만 보통 max-width와 orientation을 사용  */
+        @media (max-width: 960px) {
+            .background_color_container {
+                background-color: red;
+            }
+
+            .color_container {
+                color: red;
+                display: none;
+            }
+        }
+
+        @media only screen and (max-width: 960px) {
+            .main-wrap .visual-layout-area {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .main-wrap .visual-layout-area {
+                padding: 0 2.4rem;
+            }
+
+            .main-wrap .visual-layout-area .main-visual-wrap {
+                width: 100%;
+                height: 26rem;
+            }
+        }
+
+
+
+        /* 
+        장치별 가로 크기
+        1600, 1440, 1380, 1280, 1200, 
+        1024(가로 태블릿)
+        960
+        768(큰 스마트폰, 세로 태블릿)
+        480(일반 스마트폰)
+         */
+    </style>
+</head>
+
+<body>
+    <div class="background_color_container">화면의 크기에 따라서 배경 색이 바뀌는 박스</div>
+    <div class="color_container">화면의 크기에 따라서 글자 색이 바뀌는 박스</div>
+</body>
+
+</html>

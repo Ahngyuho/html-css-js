@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex</title>
+    <style>
+        hr {
+            margin: 20px;
+        }
+
+        div {
+            border: 1px solid #000000;
+            margin: 5px;
+            padding: 5px;
+        }
+
+        .display_container {
+            display: block;
+        }
+
+        .flex-direction_container {
+            display: flex;
+            flex-direction: row;
+            /* flex-direction: column; */
+            /* flex-direction: row-reverse; */
+            /* flex-direction: column-reverse; */
+        }
+
+        .flex-wrap_container {
+            width: 13rem;
+            display: flex;
+            flex-wrap: nowrap;
+        }
+
+        .justify-content_container {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .align-items_container {
+            display: flex;
+            height: 15rem;
+            align-items: stretch;
+        }
+
+        .align-items_container>div:first-child {
+            font-size: 3rem;
+        }
+
+        .align-items_container>div {
+            font-size: 1rem;
+        }
+
+        .align-items_container>div:last-child {
+            font-size: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>display 속성</h1>
+    <div class="display_container">
+        <div class="item">item11111</div>
+        <div class="item">item2</div>
+        <div class="item">item33333</div>
+    </div>
+    <input type="radio" name="display" value="block" data-value="block" id="display-block" checked="checked">
+    <label for="display-block" data-value="block">block</label>
+    <input type="radio" name="display" value="flex" data-value="flex" id="display-flex">
+    <label for="display-flex" data-value="flex">flex</label>
+    <input type="radio" name="display" value="inline-flex" data-value="inline-flex" id="display-inline-flex">
+    <label for="display-inline-flex" data-value="inline-flex">inline-flex</label>
+    <hr>
+
+    <h1>flex-direction 속성</h1>
+    <div class="flex-direction_container">
+        <div class="item">item11111</div>
+        <div class="item">item2</div>
+        <div class="item">item33333</div>
+    </div>
+    <input type="radio" name="flex-direction" value="row" data-value="row" id="flex-direction-row" checked="checked">
+    <label for="flex-direction-row" data-value="row">row</label>
+    <input type="radio" name="flex-direction" value="column" data-value="column" id="flex-direction-column">
+    <label for="flex-direction-column" data-value="column">column</label>
+    <input type="radio" name="flex-direction" value="row-reverse" data-value="row-reverse"
+        id="flex-direction-row-reverse">
+    <label for="flex-direction-row-reverse" data-value="row-reverse">row-reverse</label>
+    <input type="radio" name="flex-direction" value="column-reverse" data-value="column-reverse"
+        id="flex-direction-column-reverse">
+    <label for="flex-direction-column-reverse" data-value="column-reverse">column-reverse</label>
+    <hr>
+
+    <h1>flex-wrap 속성</h1>
+    <div class="flex-wrap_container">
+        <div class="item">item11111</div>
+        <div class="item">item2</div>
+        <div class="item">item33333</div>
+    </div>
+    <input type="radio" name="flex-wrap" value="nowrap" data-value="nowrap" id="flex-wrap-nowrap" checked="checked">
+    <label for="flex-wrap-nowrap" data-value="nowrap">nowrap</label>
+    <input type="radio" name="flex-wrap" value="wrap" data-value="wrap" id="flex-wrap-wrap">
+    <label for="flex-wrap-wrap" data-value="wrap">wrap</label>
+    <input type="radio" name="flex-wrap" value="wrap-reverse" data-value="wrap-reverse"
+        id="flex-direction-wrap-reverse">
+    <label for="flex-wrap-wrap-reverse" data-value="wrap-reverse">wrap-reverse</label>
+    <hr>
+
+    <h1>justify-content 속성</h1>
+    <div class="justify-content_container">
+        <div class="item">item11111</div>
+        <div class="item">item2</div>
+        <div class="item">item33333</div>
+    </div>
+    <input type="radio" name="justify-content" value="flex-start" data-value="flex-start"
+        id="justify-content-flex-start" checked="checked">
+    <label for="justify-content-flex-start" data-value="flex-start">flex-start</label>
+
+    <input type="radio" name="justify-content" value="flex-end" data-value="flex-end" id="justify-content-flex-end">
+    <label for="justify-content-flex-end" data-value="flex-end">flex-end</label>
+
+    <input type="radio" name="justify-content" value="center" data-value="center" id="justify-content-center">
+    <label for="justify-content-center" data-value="center">center</label>
+
+    <input type="radio" name="justify-content" value="space-between" data-value="space-between"
+        id="justify-content-space-between">
+    <label for="justify-content-space-between" data-value="space-between">space-between</label>
+
+    <input type="radio" name="justify-content" value="space-around" data-value="space-around"
+        id="justify-content-space-around">
+    <label for="justify-content-space-around" data-value="space-around">space-around</label>
+
+    <input type="radio" name="justify-content" value="space-evenly" data-value="space-evenly"
+        id="justify-content-space-evenly">
+    <label for="justify-content-space-evenly" data-value="space-evenly">space-evenly</label>
+
+    <hr>
+
+
+    <h1>align-items 속성</h1>
+    <div class="align-items_container">
+        <div class="item">item11111</div>
+        <div class="item">item2</div>
+        <div class="item">item33333</div>
+    </div>
+    <input type="radio" name="align-items" value="stretch" data-value="stretch" id="align-items-stretch"
+        checked="checked">
+    <label for="align-items-stretch" data-value="stretch">stretch</label>
+
+    <input type="radio" name="align-items" value="flex-start" data-value="flex-start" id="align-items-flex-start">
+    <label for="align-items-flex-start" data-value="flex-start">flex-start</label>
+
+    <input type="radio" name="align-items" value="flex-end" data-value="flex-end" id="align-items-flex-end">
+    <label for="align-items-flex-end" data-value="flex-end">flex-end</label>
+
+    <input type="radio" name="align-items" value="center" data-value="center" id="align-items-center">
+    <label for="align-items-center" data-value="center">center</label>
+
+    <input type="radio" name="align-items" value="baseline" data-value="baseline" id="align-items-baseline">
+    <label for="align-items-baseline" data-value="baseline">baseline</label>
+
+    <hr>
+
+    <style>
+        .item_container {
+            display: flex;
+        }
+
+        .item_container>div {
+            flex: 1 1 0%;
+            /* flex-grow: 1; flex-shrink: 1; flex-basis: 0%; */
+        }
+    </style>
+
+    <script>
+        document.querySelectorAll('input[name="display"]').forEach(radio => {
+            radio.addEventListener('change', event => {
+                const selectedValue = event.target.value;
+                const container = document.querySelector('.display_container');
+                container.style.display = selectedValue;
+            });
+        });
+
+        document.querySelectorAll('input[name="flex-direction"]').forEach(radio => {
+            radio.addEventListener('change', event => {
+                const selectedValue = event.target.value;
+                const container = document.querySelector('.flex-direction_container');
+                container.style.flexDirection = selectedValue;
+            });
+        });
+
+        document.querySelectorAll('input[name="flex-wrap"]').forEach(radio => {
+            radio.addEventListener('change', event => {
+                const selectedValue = event.target.value;
+                const container = document.querySelector('.flex-wrap_container');
+                container.style.flexWrap = selectedValue;
+            });
+        });
+
+        document.querySelectorAll('input[name="justify-content"]').forEach(radio => {
+            radio.addEventListener('change', event => {
+                const selectedValue = event.target.value;
+                const container = document.querySelector('.justify-content_container');
+                container.style.justifyContent = selectedValue;
+            });
+        });
+
+        document.querySelectorAll('input[name="align-items"]').forEach(radio => {
+            radio.addEventListener('change', event => {
+                const selectedValue = event.target.value;
+                const container = document.querySelector('.align-items_container');
+                container.style.alignItems = selectedValue;
+            });
+        }); 
+    </script>
+</body>
+
+</html>

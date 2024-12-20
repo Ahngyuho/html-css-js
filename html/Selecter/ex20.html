@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        /* 특정 태그를 선택하는 방법 선택 지정자 */
+        #t1:focus {
+            background-color: yellow;
+        }
+
+        #t2:active {
+            background-color: blue;
+        }
+
+        #t3:hover {
+            background-color: green;
+        }
+
+        /* n 번째 요소에 적용  */
+        tr{
+            width: 10px;
+
+        }
+        table tr:nth-child(odd) {
+            background-color: aqua;
+        }
+
+        table tr:nth-child(even) {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- 특정 어떤 태그 인데 어떤 태그냐면 id가 t1 인것... t1 은 유일한 id  -->
+    <textarea id="t1">focus</textarea>
+    <textarea id="t2">active</textarea>
+    <textarea id="t3">hover</textarea>
+
+    <table width="100%" border=1>
+        <!--  -->
+        <tr><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td></tr>
+    </table>
+</body>
+</html>

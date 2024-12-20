@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const xhr = new XMLHttpRequest(); // XMLHttpRequest 객체 생성
+      console.log(1);
+      xhr.open("GET", "https://jsonplaceholder.typicode.com/posts", true); // GET 요청 설정
+      //서버에 응답이 언제 올지 모름
+      //서버의 응답을 기다리지 않고 이하의 코드를 수행함.
+      xhr.onreadystatechange = function () {
+        console.log(2);
+        //                     서버에 응답이 옴        응답 코드가 200 임
+        if (xhr.readyState == XMLHttpRequest.DONE && xhr.status === 200) {
+          // 요청이 완료되었을 때
+          console.log(3);
+          console.log(JSON.parse(xhr.responseText)); // JSON 데이터를 파싱해서 출력
+        }
+      };
+
+      console.log(4);
+      xhr.send(); // 요청 전송
+      console.log(5);
+    </script>
+  </body>
+</html>

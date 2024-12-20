@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- head 안에 style 안에 css 코드 작성!  -->
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        header {
+            margin: 43px;
+            width: 100%;
+            border: 1px solid lightgray;
+            border-radius: 50px;
+            height: 15%;
+            background: white;
+            /* css 에서 사용할 수 있는 단위?  */
+            /* rem(요즘 많이 쓰는 것) , px , em , vh, vw */
+        }
+
+        nav {
+            width: 100%;
+            height: 5%;
+            float: left;
+            background: orange;
+        }
+
+        section { 
+            width: 70%;
+            height: 70%;
+            float: left;
+            background: olivedrab;
+        }
+
+        aside {
+            width: 30%;
+            height: 70%;
+            float: left;
+            background: red;
+        }
+
+        footer {
+            width: 100%;
+            height: 10%;
+            clear: both;
+            background: plum;
+        }
+        
+        #div1 {
+            height: 50%;
+            background: skyblue;
+        }
+
+        #div2 {
+            height: 50%;
+        }
+
+        #div3 {
+            height: 20%;
+            background: blueviolet;
+        }
+
+        #div4{
+            height: 80%;
+        }
+
+    </style>
+</head>
+<body>
+    <header>header</header>
+    <nav>nav</nav>
+    <section>
+        <div id="div1">section1</div>
+        <div id="div2">section2</div>
+    </section>
+    <aside>
+        <div id="div3">aside1</div>
+        <div id="div4">aside2</div>
+    </aside>
+    <footer>footer</footer>
+</body>
+</html>

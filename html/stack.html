@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stack 구현</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 20px;
+      }
+
+      #stack-container {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column-reverse;
+        /* 스택 형태로 역순 출력 */
+        align-items: center;
+        gap: 5px;
+      }
+
+      .stack-item {
+        width: 200px;
+        padding: 10px;
+        background-color: #4caf50;
+        color: white;
+        text-align: center;
+        border-radius: 5px;
+        font-weight: bold;
+      }
+
+      input,
+      button {
+        margin: 5px;
+        padding: 8px;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Stack 구현</h1>
+
+    <div>
+      <input type="text" id="inputValue" placeholder="값을 입력하세요" />
+      <button id="pushButton">Push</button>
+      <button id="popButton">Pop</button>
+    </div>
+
+    <div id="stack-container">
+      <!-- 스택 요소들이 여기에 추가됨 -->
+    </div>
+
+    <script>
+      let input = document.querySelector("#inputValue");
+      const pushBtn = document.querySelector("#pushButton");
+      pushBtn.addEventListener("click", () => push(input.value));
+
+      const push = (num) => {
+        const newStack = document.createElement("div");
+        let stack = document.querySelector("#stack-container");
+        newStack.classList.add("stack-item");
+        newStack.innerHTML = num;
+        stack.appendChild(newStack);
+      };
+
+      const popBtn = document.querySelector("#popButton");
+
+      popBtn.addEventListener("click", () => pop());
+
+      const pop = () => {
+        let stack = document.querySelectorAll("#stack-container div");
+        if (stack.length == 0) return;
+        // console.log(stack[stack.length - 1]);
+        stack[stack.length - 1].remove();
+      };
+    </script>
+  </body>
+</html>

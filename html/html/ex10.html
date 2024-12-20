@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+            /* 태그에 지정 */
+            /* 태그에는 기본으로 지정된 css가 있는데 이걸 직접 설정해 줄 때 태그 직접 지정 방식 사용 */
+        h1{
+            color: red;
+        }
+        /* id 지정 */
+        /* id 는 유일하게 지정해주자. */
+        /* 이 페이지 내에 유일하게 존재하는 경우 사용 */
+        /* 특정 태크 하나만 */
+        #test{
+            color: blue;
+        }
+
+        /* class 속성 */
+        /* class 는 여러 태그에 지정 가능 */
+        /* 대부분 이걸로 */
+        /*  */
+        .qwer1234{
+            color: green;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Q &amp; A 리스트</h1>
+    <hr>
+    <details>
+        <summary id="test">Question 1</summary>
+        <p>웹 개발자가 알아야 하는 언어 3가지는?</p>
+    </details>
+    <details>
+        <summary class="qwer1234">Answer 1</summary>
+        <p>HTML5, CSS, JS</p>
+    </details>
+    <hr>
+    현재 시간은 <time>10:45</time> <br>
+    정답률 <meter value="0.8" max="1.0"> 80% </meter> <br>
+    자료 업로딩 (20%) <progress value="2" max="10"></progress>
+</body>
+</html>

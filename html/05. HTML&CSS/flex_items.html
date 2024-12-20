@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex Items</title>
+    <style>
+        hr {
+            margin: 20px;
+        }
+
+        div {
+            border: 1px solid #000000;
+            margin: 5px;
+            padding: 5px;
+        }
+
+        .item_container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .item {
+            flex: 1 1 30%;
+            /* flex-grow: 1; flex-shrink: 1; flex-basis: 0%; */
+        }
+
+        /* .item:nth-child(2) {
+            flex: 3 1 20%;
+            /* flex-grow: 3; flex-shrink: 1; flex-basis: 0%; */
+        }
+
+        */
+    </style>
+</head>
+
+<body>
+
+
+
+    <h1>item의 속성</h1>
+    <div class="item_container">
+        <div class="item">item11111</div>
+        <div class="item">item2</div>
+        <div class="item">item33333</div>
+    </div>
+</body>
+
+</html>

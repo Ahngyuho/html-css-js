@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            color: red;
+        }
+
+        /* X 밑에 Y or X 하위 태그 집합 */
+        
+        /* 특정 자식 선택 */
+        /* div 밑에 있는 span 태그에만 적용 */
+        /* 딱 1 단계만...  */
+        div > span {
+            background-color: greenyellow;
+        }
+
+        
+        /* 특정 자속 선택 */
+        /* 하위에 있는 모든 태그에  */
+        div span {
+            background-color: blue;
+        }
+        .ulclass > li {
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+<body>
+    <ul class="ulclass">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <ul>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+    </ul>
+
+    <div>
+        부모 태그
+        <span>자식 태그</span>
+    </div>
+
+    <span>일반 태그</span>
+
+    <div>
+        부모 태그
+        <p>
+            자식 태그
+            <span>자손 태그</span>
+        </p>
+    </div>
+</body>
+</html>

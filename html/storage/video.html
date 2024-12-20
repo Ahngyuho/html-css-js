@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <viedo id="video"></viedo>
+    <button id="start">시작 버튼</button>
+    <script>
+      const start = document.querySelector("#start");
+
+      //사용자의 운영체제에 접근해야 하기 때문에 권한을 받아야 한다.
+      start.addEventListener("click", async () => {
+        console.log("start");
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: true,
+        });
+        // document.querySelector("#vedio").srcObject = stream;
+      });
+    </script>
+  </body>
+</html>

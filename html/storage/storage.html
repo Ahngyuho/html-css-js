@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn">버튼</button>
+    <button id="sessionBtn">세션 저장소 버튼</button>
+    <button id="cookieBtn">쿠키 저장소 버튼</button>
+    <script>
+      console.log(document);
+
+      //웹 브라우저의 객체가 저장됨
+      //덜 중요한 정보 저장!
+      console.log(window);
+      console.log(window.document);
+
+      const btn = document.querySelector("#btn");
+      btn.addEventListener("click", () => {
+        window.localStorage.key01 = "value01";
+      });
+
+      //세션은 백엔드 서버와 상관 X , 브라우저 껐다 키면 초기화
+      //일시적으로 필요한 큰 데이터를 저장할 떄 사용
+      const sessionBtn = document.querySelector("#sessionBtn");
+      sessionBtn.addEventListener("click", () => {
+        window.sessionStorage.key01 = "value01";
+        window.sessionStorage.setItem("key02", "value02");
+      });
+
+      //일시적으로 데이터 저장
+      //세션 스토리지와 다른 점은 백엔드 서버와 상호작용 하는 데이터
+      //쿠키에 값을 저장할 떄는 JS 코드로도 가능하고 HTTP 응답 프로토콜로도 가능
+      //근데 HTTP 응답 프로토콜로 하는 게 좋다.
+      // 클라이언트 코드는 JS 를 다룰 수 있으면 누구나 이 쿠키에 저장이 가능 위험
+      //
+
+      const cookieBtn = document.querySelector("#cookieBtn");
+      cookieBtn.addEventListener("click", () => {
+        document.cookie = "key01=value01";
+      });
+
+      //정규표현식
+      const getCookie = (cookieBame) => {
+        document.cookie.match("(^|;) ?" + name + "=([^;]*)(;|$)");
+      };
+
+      console.log("key01");
+    </script>
+  </body>
+</html>

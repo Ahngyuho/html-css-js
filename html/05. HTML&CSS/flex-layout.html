@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .header {
+            flex: 1 1 0%;
+            background-color: red;
+        }
+
+        .nav {
+            flex: 1 1 0%;
+            display: flex;
+            background-color: green;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav>div {
+            margin: 10px;
+            background-color: white;
+            padding: 10px;
+            border: 3px solid gray;
+            border-radius: 10px;
+        }
+
+        .section {
+            flex: 10 1 0%;
+            display: flex;
+        }
+
+        .main {
+            flex: 4 1 0%;
+            background-color: yellow;
+        }
+
+        .aside {
+            flex: 1 1 0%;
+            background-color: pink;
+        }
+
+        .footer {
+            flex: 2 1 0%;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">Heder</div>
+        <div class="nav">
+            <div>item1</div>
+            <div>item2</div>
+            <div>item3</div>
+            <div>item4</div>
+            <div>item5</div>
+            <div>item6</div>
+        </div>
+        <div class="section">
+            <div class="main">Main</div>
+            <div class="aside">Aside</div>
+        </div>
+        <div class="footer">Footer</div>
+    </div>
+</body>
+
+</html>

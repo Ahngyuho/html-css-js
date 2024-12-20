@@ -1,0 +1,33 @@
+div{
+    margin: 10px;
+    padding: 10px;
+}
+/*  */
+.main{
+    background-color: red;
+}
+
+.header{
+    background-color: green;
+}
+
+.body{
+    background-color: blue;
+}
+
+.footer{
+    background-color: yellow;
+}
+
+.side{
+    background-color: orange;
+    display: inline-block;
+    width: 30%;
+}
+
+.content{
+    background-color: gray;
+    display: inline-block;
+}
+
+

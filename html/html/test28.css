@@ -1,0 +1,34 @@
+
+/*  */
+.main{
+    background-color: red;
+}
+
+.header{
+    position: fixed;
+    top: 0px;
+    background-color: green;
+    /* display: inline-block; */
+}
+
+
+.footer{
+    position: fixed;
+    bottom: 0px;
+    background-color: yellow;
+}
+
+.side{
+    position: fixed;
+    background-color: pink;
+    display: inline-block;
+}
+
+.content{
+    background-color: yellow;
+    display: inline-block;
+    width: 100px;
+    position: relative;
+}
+
+

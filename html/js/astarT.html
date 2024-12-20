@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .grid {
+        /* flex */
+        display: flex;
+        /* 길이를 넘어가면 다음 행으로 가게 */
+        flex-wrap: wrap;
+        width: 300px;
+        height: 300px;
+      }
+
+      .cell {
+        width: 30px;
+        height: 30px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+      }
+
+      .cell:hover {
+        background-color: lightblue; /* 마우스가 올라갔을 때 배경색 변경 */
+        border-color: blue; /* 테두리 색상 변경 */
+        cursor: pointer; /* 마우스 커서 변경 */
+      }
+
+      .start {
+        background-color: green;
+      }
+
+      .end {
+        background-color: red;
+      }
+
+      .wall {
+        background-color: black;
+      }
+
+      .visited {
+        background-color: aqua;
+      }
+
+      .track {
+        background-color: blueviolet;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid"></div>
+    <script>
+      let row = 10;
+      let col = 10;
+
+      //   for (let i = 0; i < 10; i++) {
+      //     for (let j = 0; j < 10; j++) {
+      //       const newGrid = document.createElement("div");
+      //       newGrid.classList.add("cell");
+      //       grid.appendChild(newGrid);
+      //     }
+      //   }
+      let start = null;
+      let end = null;
+      let wall = [];
+
+      for (let i = 0; i < row * col; i++) {
+        let grid = document.querySelector(".grid");
+        //div 태그를 만들어서 추가해야 함.
+        const newGrid = document.createElement("div");
+        newGrid.classList.add("cell");
+        newGrid.classList.add("row");
+        newGrid.classList.add("col");
+        newGrid.setAttribute("row", Math.floor(i / 10));
+        newGrid.setAttribute("col", i % 10);
+        newGrid.addEventListener("click", () => {
+          //   console.log(newGrid.getAttribute("row"), newGrid.getAttribute("col"));
+          if (start === null) {
+            newGrid.classList.add("start");
+            start = newGrid;
+          } else if (end === null) {
+            newGrid.classList.add("end");
+            end = newGrid;
+          } else {
+            newGrid.classList.add("wall");
+            wall.push(newGrid);
+          }
+        });
+        grid.appendChild(newGrid);
+      }
+
+      // 주변 확인 기능
+      //객체(cell)를 하나 입력 받아서
+      //객체의 cell 이 갈수있는 주변 확인 각각 neighbors 변수에 빈 배열 저장
+      // cell 을 neighbors 에 추가
+      // neighbors 반환
+      // cell은 특정 div 요소
+
+      const getNeighbors = (cell) => {
+        let neighbors = [];
+
+        //전체 html -> 특정 태그  (grid) -> 특정 태그
+        let cellList = document.querySelector(".grid").querySelectorAll("div");
+        let row = Number(cell.getAttribute("row"));
+        let col = Number(cell.getAttribute("col"));
+        let t = cellList[(row - 1) * 10 + col];
+        let b = cellList[(row + 1) * 10 + col];
+        let l = cellList[row * 10 + col - 1];
+        let r = cellList[row * 10 + col + 1];
+        let lt = cellList[(row - 1) * 10 + col - 1];
+        let rt = cellList[(row - 1) * 10 + col + 1];
+        let lb = cellList[(row + 1) * 10 + col - 1];
+        let rb = cellList[(row + 1) * 10 + col + 1];
+
+        neighbors.push(t);
+        neighbors.push(b);
+        neighbors.push(l);
+        neighbors.push(r);
+        neighbors.push(lt);
+        neighbors.push(rt);
+        neighbors.push(lb);
+        neighbors.push(rb);
+
+        return neighbors;
+      };
+
+      function check(cell) {
+        let grid = document.getElementsByClassName("cell");
+        console.log(cell.row, cell.col);
+        const dx = [-1, 1, 0, 0, -1, -1, 1, 1]; // x 방향 (행)
+        const dy = [0, 0, -1, 1, -1, 1, -1, 1]; // y 방향 (열)
+        let neighbors = [];
+        // let row = cell.getAttribute("row");
+        // let col = cell.getAttribute("col");
+        let row = cell.row;
+        let col = cell.col;
+        console.log(grid[row * 10 + col]);
+        for (let i = 0; i < 8; i++) {
+          let x = row + dx[i];
+          let y = col + dy[i];
+
+          if (x >= 0 && x < 10 && y >= 0 && y < 10) {
+            neighbors.push(grid[x * 10 + y]);
+          }
+        }
+
+        return neighbors;
+      }
+
+      //cell을 하나 전달받는 visitied 라는 이름의 방문하는 기능
+      //전달받은 cell 태그의 클래스에 visited 를 추가
+      //전달받은 cell 태그에 클래스의 클래스에 start가 없고 end 도 없으면
+      const visitiedMe = (cell) => {
+        let x = cell.getAttribute("row");
+        let y = cell.getAttribute("col");
+
+        if (
+          !(x == start.row && y == start.col) &&
+          !(x == end.row && y == end.col)
+        ) {
+          cell.createElement("visited");
+        }
+      };
+
+      const visited = (cell) => {
+        if (
+          !cell.classList.contains("start") &&
+          !cell.classList.contains("end")
+        ) {
+          cell.classList.add("visited");
+        }
+      };
+
+      function tracking(cur){
+        if(cur === start){
+            return;
+        }
+
+        tracking(cur.)
+      }
+
+      const astar = (start, end) => {
+        const openList = [];
+        const closeList = [];
+        openList.push(start);
+
+
+        //주변의 cell 들을 저장할 배열
+
+        while (true) {
+          let cur = openList[0];
+          openList.shift();
+          closeList.push(cur);
+          let neighbors;
+          neighbors = getNeighbors(cur);
+          if (cur === end) {
+            tracking(end, closeList);
+
+            break;
+          }
+
+          //주변의 cell 들을 하나씩 꺼내면서 반복
+          for (let i = 0; i < neighbors.length; i++) {
+            //만약 현재 cell 에 wall 이라는 클래스가 없고 현재 cell 이 닫힌 목록에 없으면
+            if (
+              !neighbors[i].classList.contains("wall") &&
+              !closeList.includes(neighbors[i])
+            ) {
+              let g;
+              if (i < 4) g = 10;
+              else g = 14;
+
+              let h = heuristic(neighbors[i], end);
+              let f = g + h;
+
+              neighbors[i].setAttribute("f", f);
+              neighbors[i].setAttribute("g", g);
+              neighbors[i].setAttribute("h", h);
+
+              let parent = {
+                row: Number(cur.getAttribute("row")),
+                col: Number(cur.getAttribute("col")),
+              };
+
+              neighbors[i].setAttribute("parent", parent);
+
+              let findInstance = openList.find(
+                (instance) =>
+                  Number(instance.getAttribute("row")) ===
+                    Number(neighbors[i].getAttribute("row")) &&
+                  Number(instance.getAttribute("col")) ===
+                    Number(neighbors[i].getAttribute("col"))
+              );
+
+              if (findInstance != undefined) {
+                if (
+                  Number(findInstance.getAttribute("f")) >
+                  Number(neighbors[i].getAttribute("f"))
+                ) {
+                  const idx = openList.indexOf(findInstance);
+                  openList.slice(idx);
+                  openList.push(neighbors[i]);
+                  visited(neighbors[i]);
+                }
+              }
+
+              if (findInstance === undefined) {
+                openList.push(neighbors[i]);
+                visited(neighbors[i]);
+              }
+            }
+          }
+          //열린 목록을 F 값을 기준으로 정렬
+          openList.sort(
+            (a, b) => Number(a.getAttribute("f")) - Number(b.getAttribute("f"))
+          );
+        }
+      };
+
+      const heuristic = (pos1, pos2) => {
+        return (
+          10 *
+          (Math.abs(
+            Number(pos1.getAttribute("row")) - Number(pos2.getAttribute("row"))
+          ) +
+            Math.abs(
+              Number(pos1.getAttribute("col")) -
+                Number(pos2.getAttribute("col"))
+            ))
+        );
+      };
+
+      //
+    </script>
+  </body>
+</html>

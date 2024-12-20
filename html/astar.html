@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .cell {
+        width: 30px;
+        height: 30px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+      }
+
+      .grid {
+        display: flex;
+        flex-wrap: wrap;
+        width: 300px;
+        height: 300px;
+      }
+
+      .start {
+        background-color: green;
+      }
+
+      .end {
+        background-color: red;
+      }
+
+      .wall {
+        background-color: black;
+      }
+
+      .visited {
+        background-color: blue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="grid"></div>
+    <script>
+      let start = null;
+      let end = null;
+
+      for (let i = 0; i < 100; i++) {
+        let gridDiv = document.querySelector(".grid");
+        const newDiv = document.createElement("div");
+        newDiv.classList.add("cell");
+        newDiv.setAttribute("data-row", Math.floor(i / 10));
+
+        newDiv.setAttribute("data-col", i % 10);
+
+        newDiv.addEventListener("click", () => {
+          if (start === null) {
+            newDiv.classList.add("start");
+            start = newDiv;
+          } else if (end === null) {
+            newDiv.classList.add("end");
+            end = newDiv;
+          } else {
+            newDiv.classList.add("wall");
+          }
+        });
+
+        gridDiv.appendChild(newDiv);
+      }
+
+      const getNeighbors = (cell) => {
+        let neighbors = [];
+
+        let cellList = document.querySelector(".grid").querySelectorAll("div");
+        let row = Number(cell.getAttribute("data-row"));
+        let col = Number(cell.getAttribute("data-col"));
+        let t = cellList[(row - 1) * 10 + col];
+        let b = cellList[(row + 1) * 10 + col];
+        let l = cellList[row * 10 + col - 1];
+        let r = cellList[row * 10 + col + 1];
+        let lt = cellList[(row - 1) * 10 + col - 1];
+        let rt = cellList[(row - 1) * 10 + col + 1];
+        let lb = cellList[(row + 1) * 10 + col - 1];
+        let rb = cellList[(row + 1) * 10 + col + 1];
+
+        neighbors.push(l);
+        neighbors.push(r);
+        neighbors.push(t);
+        neighbors.push(b);
+        neighbors.push(lt);
+        neighbors.push(rt);
+        neighbors.push(lb);
+        neighbors.push(rb);
+
+        return neighbors;
+      };
+
+      const visited = (cell) => {
+        if (
+          !cell.classList.contains("start") &&
+          !cell.classList.contains("end")
+        ) {
+          cell.classList.add("visited");
+        }
+      };
+
+      const heuristic = (a, b) => {
+        return (
+          10 *
+          (Math.abs(
+            Number(a.getAttribute("data-row")) -
+              Number(b.getAttribute("data-row"))
+          ) +
+            Math.abs(
+              Number(a.getAttribute("data-col")) -
+                Number(b.getAttribute("data-col"))
+            ))
+        );
+      };
+
+      const astar = (start, end) => {
+        const openList = [];
+        const closeList = [];
+
+        // start를 열린 목록에 넣는다.
+        openList.push(start);
+
+        // 열린 목록에 length가 0보다 크면 계속 반복
+        while (openList.length > 0) {
+          //열린 목록의 맨 앞의 요소를 꺼내서 current에 저장
+          let current = openList.shift();
+          //current를 닫힌 목록에 넣는다.
+          closeList.push(current);
+
+          let neighbor;
+          neighbor = getNeighbors(start);
+
+          for (let i = 0; i < neighbor.length; i++) {
+            if (
+              !neighbor[i].classList.contains("wall") &&
+              !closeList.includes(neighbor[i])
+            ) {
+              let g;
+              if (i < 4) {
+                g = 10;
+              } else {
+                g = 14;
+              }
+              let h = heuristic(neighbor[i], end);
+              let f = g + h;
+              neighbor[i].setAttribute("f", f);
+              neighbor[i].setAttribute("g", g);
+              neighbor[i].setAttribute("h", h);
+
+              // 현재 neighbor[i]에 부모를 현재 current로 지정
+              let r = Number(current.getAttribute("row"));
+              let c = Number(current.getAttribute("col"));
+              neighbor[i].setAttribute("p", row * 10 + col);
+              // 현재 neighbor[i]를 방문 처리
+              visited(neighbor[i]);
+
+              openList.push(neighbor[i]);
+
+              // 만약에 neighbor[i]가 end와 같다면
+              if (neighbor[i] == end) {
+                //객체 비교는 neighbor.isEqualNode(end)
+                return;
+              }
+              //      return으로 함수를 종료
+            }
+          }
+          // 열린 목록을 F 값을 기준으로 정렬
+          openList.sort((a, b) => {
+            return Number(a.getAttribute("f")) - Number(b.getAttribute("f"));
+          });
+
+          console.log(openList);
+        }
+      };
+    </script>
+  </body>
+</html>

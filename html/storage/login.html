@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="loginForm">
+      <input type="text" id="username" name="username" /> <br />
+      <input type="text" id="password" name="password" /> <br />
+
+      <button class="loginBtn" type="submit">로그인</button>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+      const username = document.querySelector("#username").value;
+      const password = document.querySelector("#password").value;
+
+      const login = async () => {
+        await axios
+          .post("http://localhost:8080/login", {
+            username: "test",
+            password: "qwer1234",
+          })
+          .then((response) => {
+            console.log("POST Response:", response.data);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      };
+
+      login();
+
+      const loginBtn = document.querySelector("loginBtn");
+      loginBtn.addEventListener(("click") => {
+        axios
+          .post("http://localhost:8080/login", {
+            username: username,
+            password: password,
+          })
+          .then((response) => {
+            console.log("POST Response:", response.data);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      });
+
+      // 폼 요소 선택
+      const form = document.getElementById("loginForm");
+
+      // 폼 제출 이벤트 리스너 추가
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault(); // 기본 폼 제출 동작 방지 (페이지 리로드 방지)
+
+        // 폼 데이터 가져오기
+        const formData = new FormData(form);
+
+        // 객체로 변환 (axios 사용을 위해)
+        const data = Object.fromEntries(formData.entries());
+
+        try {
+          // 서버에 POST 요청 보내기
+          const response = await axios.post(
+            "http://localhost:8080/login",
+            data,
+            {
+              headers: {
+                "Content-type": "application/json",
+              },
+            }
+          );
+
+          // 서버 응답 처리
+          console.log("Success:", response.data);
+          //   alert("로그인 성공!");
+        } catch (error) {
+          // 에러 처리
+          console.error(
+            "Error:",
+            error.response ? error.response.data : error.message
+          );
+          alert("로그인 실패!");
+        }
+      });
+
+      //   const username = document.querySelector("#username").value;
+    </script>
+  </body>
+</html>

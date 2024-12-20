@@ -1,0 +1,28 @@
+.price_sum {
+  margin: 30px 0 0 0;
+  padding: 20px 40px 25px 40px;
+  border: 2px solid #d6d6d6;
+}
+
+.price_sum:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+.price_sum_cont {
+  display: table;
+  float: right;
+  text-align: right;
+}
+
+.price_sum_cont .price_sum_list {
+  position: relative;
+}
+
+.price_sum_cont .price_sum_list dl {
+  display: table-cell;
+  padding: 5px 10px 5px 10px;
+  font-size: 16px;
+  text-align: right;
+}

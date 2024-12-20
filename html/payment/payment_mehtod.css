@@ -1,0 +1,22 @@
+/* 얘네는 효과를 모르겠음 */
+/* .payment_progress_list dt {
+  display: block;
+  width: 180px;
+  padding: 0 0 0 24px;
+  font-size: 15px;
+  font-weight: bold;
+  vertical-align: top;
+}
+
+.general_payment dd {
+  min-width: 520px;
+}
+.general_payment dd {
+  margin: 10px 0 0 0;
+} */
+
+.payment_progress .payment_progress_select li {
+  display: inline-block;
+  margin: 0 30px 0 0;
+  font-size: 12px;
+}
